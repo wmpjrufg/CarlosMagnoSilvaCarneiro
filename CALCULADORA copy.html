@@ -1,0 +1,95 @@
+<html lang = "pt-BR">
+  	<head>
+		<title>Mecânica dos sólidos - Inércia</title>
+		<style>
+			.entradas{
+				width: 350px;
+			}
+			.entradas select{
+				width: 100.00%;
+			}
+			.entradas input{
+				width: 100.00%;
+			}
+		</style>
+		<script src = "https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id = "MathJax-script" async src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  	</head>
+  	<body>
+		<h1><b>CALCULADORA CONCRETO PROTENDIDO</b></h1>
+			<h2><b>Tensões Elásticas</b></h2>
+				<div class = 'entradas'>
+				<h3>Entradas:</h3>
+					<table>
+						<tr>
+							<td>Operação:</td> <!--Linha 1 da tabela-->
+							<td>            <!--Linha 2 da tabela-->
+								<select id = "operacao">
+									<option value = "" data-default disabled selected></option>
+									<option value = "SUM">+</option>
+									<option value = "MIN">-</option>
+									<option value = "DIV">/</option>
+									<option value = "MUL">*</option>
+								</select>
+							</td>
+						</tr>
+						<tr>   <!-- \( valor \) para math comments-->
+							<td>Valor 1 (\(x_1\)):</td>
+							<td><input type = "number" id = "valor_1" size = "40"> <br></td>
+						</tr>
+						<tr>
+							<td>Valor 2 (\(x_1\)):</td>
+							<td><input type = "number" id = "valor_2" size = "40"> <br></td>
+						</tr>
+					</table>
+				</div>
+					<br>
+					<button id = 'calcular'>Calcular</button>
+				<h3>Processamento:</h3>	
+					<p>Qual o valor 1:</p>
+					<p id = "valor_11"></p>
+					<p>Qual o valor 1:</p>
+					<p id = "valor22"></p>	
+					<p>Operação escolhida:</p>
+					<p id = "operacaoo"></p>
+				<h3>Resultados:</h3>
+					<p>Resposta (\(x_{final}\)):</p>
+					<p id = "resultado"></p>
+	<script>
+		function CALCULADORA() {	
+			/*
+			Esta função determina o comprimento de ancoragem de uma barra de aço em concreto.
+			*/
+			const VALOR_1 = document.getElementById("valor_1").value;
+			const VALOR_2 = document.getElementById("valor_2").value;
+			const OP = document.getElementById("operacao").value;
+
+			// Cálculo do comprimento de ancoragem conforme item 9.3.2.1 da NBR 6118 (2014)
+			if (OP == '+') {
+				// soma
+				RESULTADO = VALOR_1 + VALOR_2;
+			} else if (OP == '-') {
+				// subtração
+				RESULTADO = VALOR_1 - VALOR_2;
+			} else if (OP == '/') {
+				// divisão
+				RESULTADO = VALOR_1 / VALOR_2;
+			} else if (OP == '*') {
+				// substração
+				RESULTADO = VALOR_1 * VALOR_2;
+			}
+			
+			// Processamento
+			document.querySelector('#valor_11').textContent = VALOR_1;
+			document.querySelector('#valor_22').textContent = VALOR_2;
+			document.querySelector('#operacaoo').textContent = OP;
+			
+			// Resultado final
+			document.querySelector('#resultado').textContent = RESULTADO;
+			}
+		// Função de chamada do clique do botão
+		const PROCESSAR = document.getElementById("calcular");
+		PROCESSAR.addEventListener('click', CALCULADORA);
+	</script>
+  </body>
+</html>
