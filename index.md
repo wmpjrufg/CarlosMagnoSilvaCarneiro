@@ -6,7 +6,7 @@
 
 <ul>
     <li><a href="https://github.com/wmpjrufg/CarlosMagnoSilvaCarneiro/blob/gh-pages/TEORIA.md">Acesso a Teoria</a></li>
-    <li><a href="https://github.com/wmpjrufg/CarlosMagnoSilvaCarneiro/blob/gh-pages/CALCULADORA.md">Acesso a Calculadora</a></li>
+    <li><a href="https://github.com/wmpjrufg/CarlosMagnoSilvaCarneiro/blob/gh-pages/CALCULADORA copy.html">Acesso a Calculadora</a></li>
 </ul>
 
 <p
