@@ -1,0 +1,130 @@
+<html lang = "pt-BR">
+  	<head>
+		<title>Concreto Protendido-Diagrama de Magnel</title>
+		<style>
+			.entradas{
+				width: 350px;
+			}
+			.entradas select{
+				width: 100.00%;
+			}
+			.entradas input{
+				width: 100.00%;
+			}
+		</style>
+		<script src = "https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id = "MathJax-script" async src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  	</head>
+  	<body>
+		<h1><b>CALCULADORA DAS TENSÕES RESTRITIVAS</b></h1>
+			<h2><b>Tensões nas fibras inferiores e superiores</b></h2>
+				<div class = 'entradas'>
+				<h3>Entradas:</h3>
+					<table>
+						<tr>
+							<td>Área (m^2):</td>
+							<td><input type = "number" id = "A_{c}" size = "40"> <br></td>
+							    </select>
+							</td>
+						</tr>
+						<tr>
+							<td>Momento resistente (m^3):</td>
+							<td><input type = "number" id = "W_{spm}" size = "40"> <br></td>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Protensão (kN):</td>
+							<td><input type = "number" id = "P_{t}" size = "40"> <br></td>
+								</select>
+							</td>
+						</tr>
+                        <tr>
+							<td>Excentricidade (m):</td>
+							<td><input type = "number" id = "e_{p}" size = "40"> <br></td>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>\(M_{g1} (kNm)\):</td>
+							<td><input type = "number" id = "M_{g1}" size = "40"> <br></td>
+                            	</select>
+						</tr>
+						<tr>
+							<td>\(M_{g2} (kNm)\):</td>
+							<td><input type = "number" id = "M_{g2}" size = "40"> <br></td>
+                            	</select>
+						</tr>
+                        <tr>
+							<td>\(M_{g3} (kNm)\):</td>
+							<td><input type = "number" id = "M_{g3}" size = "40"> <br></td>
+                            	</select>
+						</tr>
+                        <tr>
+							<td>\(M_{q1} (kNm)\):</td>
+							<td><input type = "number" id = "M_{q1}" size = "40"> <br></td>
+                            	</select>
+						</tr>
+                        <tr>
+							<td>\(M_{q2} (kNm)\):</td>
+							<td><input type = "number" id = "M_{q2}" size = "40"> <br></td>
+                            	</select>
+						</tr>
+					</table>
+				</div>
+					<br>
+					<button id = 'calcular'>Calcular</button>
+				<h3>Processamento:</h3>	
+					<p>Tensão devido a protensão (kN/m<sup>2</sup>) :</p>
+					<p id = "&#963;_1"></p>
+					<p>Tensão devido as cargas permanentes (kN/m<sup>2</sup>) :</p>
+					<p id = "&#963;_2"></p>	
+					<p>Tensão devido as cargas variáveis (kN/m<sup>2</sup>) :</p>
+					<p id = "&#963;_3"></p>
+				<h3>Resultados:</h3>
+					<p>Tensão nas fibras superiores (kN/m<sup>2</sup>):</p>
+					<p id = "&#963;_total_sup"></p>
+					<p>Tensão nas fibras inferiores (kN/m<sup>2</sup>):</p>
+					<p id = "&#963;_total_inf"></p>
+	<script>
+		function CALCULADORA()	{
+			/*
+			Esta função determina as tensões restritivas nas fibras superiores e inferiores.
+			*/
+			const A_c = document.getElementById("A_{c}").value;
+			const W_spm = document.getElementById("W_{spm}").value;
+			const P_t = document.getElementById("P_{t}").value;
+			const e_p = document.getElementById("e_{p}").value;
+			const M_g1 = document.getElementById("M_{g1}").value;
+			const M_g2 = document.getElementById("M_{g2}").value;
+			const M_g3 = document.getElementById("M_{g3}").value;
+			const M_q1 = document.getElementById("M_{q1}").value;
+			const M_q2 = document.getElementById("M_{q2}").value;
+			var VALOR_1 = document.getElementById("&#963;_{1}").value;
+			var VALOR_2 = document.getElementById("&#963;_{2}").value;
+			var VALOR_3 = document.getElementById("&#963;_{3}").value;
+
+			// Cálculo das tensões limites.
+
+				// Cálculo da tensão normal devido a protensão 
+				VALOR_1 = (P_t/A_c)+((P_t*e_p)/W_spm)
+				// Cálculo da tensão normal devido as cargas permanentes 
+				VALOR_2 = (M_g1/W_spm)+(M_g2/W_spm)+(M_g3/W_spm)
+				// Cálculo da tensão normal devido as cargas variáveis
+				VALOR_3 = (M_q1/W_spm)+(M_q2/W_spm)
+
+			// Processamento
+
+			document.querySelector('#&#963;_1').textContent = VALOR_1;
+			document.querySelector('#&#963;_2').textContent = VALOR_2;
+			document.querySelector('#&#963;_3').textContent = VALOR_3;
+			
+			// Resultado final
+			document.querySelector('#&#963;_total_sup').textContent = VALOR_4;
+			}
+		// Função de chamada do clique do botão
+		const PROCESSAR = document.getElementById("calcular");
+		PROCESSAR.addEventListener('click', CALCULADORA);
+	</script>
+  </body>
+</html>
